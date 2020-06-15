@@ -26,7 +26,9 @@ EOF
 Verify status of Knative Service until is Ready
 ```
 kubectl get ksvc -w
-```{{execute}}
+```{{execute interrupt}}
+
+You can also exit the watch command with <kbd>Ctrl</kbd>+<kbd>C</kbd>
 
 Test the App
 ```
