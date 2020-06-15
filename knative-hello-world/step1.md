@@ -11,16 +11,13 @@ kubectl get pods -A
 Install Serving crds
 ```
 kubectl apply --filename https://github.com/knative/serving/releases/download/v0.15.1/serving-crds.yaml
-```{{execute}}
 
-Install the Serving core
-```
 kubectl apply --filename https://github.com/knative/serving/releases/download/v0.15.1/serving-core.yaml
 ```{{execute}}
 
-Verify that all pods for Knative serving are **Running** using the watch command.
+Verify that all pods for Knative serving are **Running**
 ```
 watch kubectl get pods --namespace knative-serving
 ```{{execute interrupt}}
 
-You can also exit the watch command with <kbd>Ctrl</kbd>+<kbd>C</kbd>
+When all pods are **Running** then exit the watch command using <kbd>Ctrl</kbd>+<kbd>C</kbd>

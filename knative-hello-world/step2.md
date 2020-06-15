@@ -7,12 +7,12 @@ More info [#installing-the-serving-component](https://knative.dev/docs/install/a
 kubectl apply --filename https://github.com/knative/net-kourier/releases/download/v0.15.0/kourier.yaml
 ```{{execute}}
 
-Verify Kourier is Running
+Verify that all pods for Knative serving are **Running**
 ```
 watch kubectl get pods --namespace kourier-system
 ```{{execute interrupt}}
 
-You can also exit the watch command with <kbd>Ctrl</kbd>+<kbd>C</kbd>
+When all pods are **Running** then exit the watch command using <kbd>Ctrl</kbd>+<kbd>C</kbd>
 
 
 ```
@@ -65,7 +65,7 @@ spec:
     app: 3scale-kourier-gateway
   type: NodePort
   externalIPs:
-    - [[KATACODA_HOST]]
+    - [[HOST_IP]]
 EOF
 ```{{execute}}
 
@@ -87,8 +87,6 @@ kubectl patch configmap/config-network \
 ## Configure DNS
 ```
 export KNATIVE_DOMAIN="[[KATACODA_HOST]].nip.io"
-```{{execute}}
-
-```
 kubectl patch configmap -n knative-serving config-domain -p "{\"data\": {\"$KNATIVE_DOMAIN\": \"\"}}"
+echo DNS Domain KNATIVE_DOMAIN is now configure
 ```{{execute}}
