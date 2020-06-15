@@ -20,33 +20,6 @@ cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Service
 metadata:
-  name: kourier-nodeport
-  namespace: kourier-system
-  labels:
-    networking.knative.dev/ingress-provider: kourier
-spec:
-  ports:
-  - name: http2
-    port: 80
-    protocol: TCP
-    targetPort: 8080
-    nodePort: 32080
-  - name: https
-    port: 443
-    protocol: TCP
-    targetPort: 8443
-    nodePort: 32443
-  selector:
-    app: 3scale-kourier-gateway
-  type: NodePort
-EOF
-```{{execute}}
-
-```
-cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: Service
-metadata:
   name: kourier-ingress
   namespace: kourier-system
   labels:

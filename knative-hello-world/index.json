@@ -1,8 +1,8 @@
 {
     "title": "Knative Hello World",
-    "description": "You first Knative Application",
+    "description": "Your First Knative Application",
     "difficulty": "intermediate",
-    "time": "10 minutes",
+    "time": "5 minutes",
     "details": {
         "steps": [
             {
@@ -28,8 +28,9 @@
         }
     },
     "environment": {
+        "hideintro": true,
         "uilayout": "terminal",
-        "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nStart Kubernetes using `launch.sh`\u001b[m\r\n"
+        "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\u001b[m\r\n"
     },
     "backend": {
         "imageid": "kubernetes-cluster-running:1.18"
