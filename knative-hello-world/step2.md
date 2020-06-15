@@ -86,7 +86,7 @@ kubectl patch configmap/config-network \
 
 ## Configure DNS
 ```
-export KNATIVE_DOMAIN="[[KATACODA_HOST]].nip.io"
+export KNATIVE_DOMAIN="[[HOST_IP]].nip.io"
 kubectl patch configmap -n knative-serving config-domain -p "{\"data\": {\"$KNATIVE_DOMAIN\": \"\"}}"
 echo DNS Domain KNATIVE_DOMAIN is now configure
 ```{{execute}}
