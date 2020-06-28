@@ -31,3 +31,7 @@
 
     Some people call this **Serverless** 🎉 🌮 🔥
 
+1. There are no more pods
+    ```
+    kubectl get pods
+    ```{{execute}}
