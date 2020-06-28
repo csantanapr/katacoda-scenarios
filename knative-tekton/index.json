@@ -1,0 +1,34 @@
+{
+    "title": "Knative and Tekton",
+    "description": "Build and Deploy Knative Apps using Tekton",
+    "difficulty": "intermediate",
+    "time": "10 minutes",
+    "details": {
+        "steps": [
+            {
+                "title": "Step 1 - Using Knative to Run Serverless Applications",
+                "code": "foreground.sh",
+                "text": "step1.md"
+            },
+            {
+                "title": "Step 2 - Using Tekton to Build and Deploy Applications",
+                "text": "step2.md"
+            }
+        ],
+        "intro": {
+            "text": "intro.md",
+            "credits": ""
+        },
+        "finish": {
+            "text": "finish.md"
+        }
+    },
+    "environment": {
+        "hideintro": true,
+        "uilayout": "editor-terminal",
+        "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\u001b[m\r\n"
+    },
+    "backend": {
+        "imageid": "kubernetes-cluster-running:1.18"
+    }
+}
