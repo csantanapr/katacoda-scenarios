@@ -1,34 +1,40 @@
 {
-    "title": "Knative and Tekton",
-    "description": "Build and Deploy Knative Apps using Tekton",
-    "difficulty": "intermediate",
-    "time": "10 minutes",
-    "details": {
-        "intro": {
-            "text": "intro.md",
-            "code": "background.sh",
-            "credits": ""
-        },
-        "steps": [
-            {
-                "title": "Step 1 - Using Knative to Run Serverless Applications",
-                "text": "step1.md"
-            },
-            {
-                "title": "Step 2 - Using Tekton to Build and Deploy Applications",
-                "text": "step2.md"
-            }
-        ],
-        "finish": {
-            "text": "finish.md"
-        }
+  "title": "Knative and Tekton",
+  "description": "Build and Deploy Knative Apps using Tekton",
+  "difficulty": "intermediate",
+  "time": "10 minutes",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "credits": ""
     },
-    "environment": {
-        "hideintro": true,
-        "uilayout": "editor-terminal",
-        "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\u001b[m\r\n"
-    },
-    "backend": {
-        "imageid": "kubernetes-cluster-running:1.18"
+    "steps": [
+      {
+        "title": "Step 1 - Setup Knative",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2 - Using Knative to Run Serverless Applications",
+        "text": "step2.md"
+      },
+      {
+        "title": "Step 3 - Using Tekton to Build and Deploy Applications",
+        "text": "step3.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
     }
+  },
+  "environment": {
+    "hideintro": true,
+    "hidefinish": true,
+    "hideHiddenFiles": true,
+    "uilayout": "editor-terminal",
+    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\u001b[m\r\n",
+    "uieditorpath": "knative-tekton"
+  },
+  "backend": {
+    "imageid": "kubernetes-cluster-running:1.18"
+  }
 }

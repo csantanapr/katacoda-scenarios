@@ -1,27 +1,33 @@
-## Using Tekton to Build and Deploy Applications
+## Create Knative Service
 
 
-1. Install the provided task _build_ like this.
+1. Using the Knative CLI `kn` deploy an application usig a Container Image
     ```
-    kubectl apply -f tekton/task-build.yaml
+    kn service create hello --image gcr.io/knative-samples/helloworld-go
     ```{{execute}}
-1. You can list the task that we just created using the `tkn` CLI
+1. You can see list your service
     ```
-    tkn task ls
+    kn service list hello
     ```{{execute}}
-1. We can also get more details about the _build_ **Task** using `tkn task describe`
+1. Use curl to invoke the Application
     ```
-    tkn task describe build
+    curl http://hello.$SUB_DOMAIN
     ```{{execute}}
-1. Let's use the Tekton CLI to test our _build_ **Task** you need to pass the ServiceAccount `pipeline` to be use to run the Task. You will need to pass the GitHub URL to your fork or use this repository. You will need to pass the directory within the repository where the application in our case is `nodejs`. The repository image name is `knative-tekton`
+1. You can watch the pods and see how they scale down to zero after http traffic stops to the url
     ```
-    tkn task start build --showlog \
-      -p repo-url=${GIT_REPO_URL} \
-      -p image=${REGISTRY_SERVER}/${REGISTRY_NAMESPACE}/knative-tekton \
-      -p CONTEXT=nodejs \
-      -s pipeline 
-    ```{{execute}}
-1. You can check out the container registry and see that the image was pushed to repository a minute ago, it should return status Code `200`
+    kubectl get pod -l serving.knative.dev/service=hello -w
+    ```{{execute interrupt}}
+
+    Output should look like this after a few seconds when http traffic stops:
     ```
-    curl -s -o /dev/null -w "%{http_code}\n" https://index.$REGISTRY_SERVER/v1/repositories/$REGISTRY_NAMESPACE/knative-tekton/tags/latest
-    ```{{execute}}
+    NAME                                     READY   STATUS
+    hello-r4vz7-deployment-c5d4b88f7-ks95l   2/2     Running
+    hello-r4vz7-deployment-c5d4b88f7-ks95l   2/2     Terminating
+    hello-r4vz7-deployment-c5d4b88f7-ks95l   1/2     Terminating
+    hello-r4vz7-deployment-c5d4b88f7-ks95l   0/2     Terminating
+    ```
+
+    When the pod **Terminates** then exit the watch command using <kbd>Ctrl</kbd>+<kbd>C</kbd>
+
+    Some people call this **Serverless** 🎉 🌮 🔥
+
