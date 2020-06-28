@@ -4,10 +4,14 @@
     "difficulty": "intermediate",
     "time": "10 minutes",
     "details": {
+        "intro": {
+            "text": "intro.md",
+            "code": "background.sh",
+            "credits": ""
+        },
         "steps": [
             {
                 "title": "Step 1 - Using Knative to Run Serverless Applications",
-                "code": "foreground.sh",
                 "text": "step1.md"
             },
             {
@@ -15,10 +19,6 @@
                 "text": "step2.md"
             }
         ],
-        "intro": {
-            "text": "intro.md",
-            "credits": ""
-        },
         "finish": {
             "text": "finish.md"
         }
