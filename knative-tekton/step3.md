@@ -1,15 +1,11 @@
 ## Install Tekton
 
-Run the Script to Install Knative for the Tutorial
-```
-./.katacoda/tekton.sh
-```{{execute}}
-
-
-
-- Get access to a container registry such as quay, dockerhub, or your own private registry instance from a Cloud provider such as IBM Cloud 😉. On this tutorial we are going to use [Dockerhub](https://hub.docker.com/)
-
-1 Set the environment variables `REGISTRY_SERVER`, `REGISTRY_NAMESPACE` and `REGISTRY_PASSWORD`, The `REGISTRY_NAMESPACE` most likely would be your dockerhub username. For Dockerhub use `docker.io` as the value for `REGISTRY_SERVER`
+1. Run the Script to Install Knative for the Tutorial
+    ```
+    source .katacoda/tekton.sh
+    ```{{execute}}
+1. Get access to a container registry such as quay, dockerhub, or your own private registry instance from a Cloud provider such as IBM Cloud 😉. On this tutorial we are going to use [Dockerhub](https://hub.docker.com/)
+1. Set the environment variables `REGISTRY_SERVER`, `REGISTRY_NAMESPACE` and `REGISTRY_PASSWORD`, The `REGISTRY_NAMESPACE` most likely would be your dockerhub username. For Dockerhub use `docker.io` as the value for `REGISTRY_SERVER`
     ```
     REGISTRY_SERVER='docker.io'
     REGISTRY_NAMESPACE='REPLACEME_DOCKER_USERNAME_VALUE'

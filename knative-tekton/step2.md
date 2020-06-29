@@ -5,7 +5,7 @@
     ```
     kn service create hello --image gcr.io/knative-samples/helloworld-go
     ```{{execute}}
-1. You can see list your service
+1. You can list your service
     ```
     kn service list hello
     ```{{execute}}

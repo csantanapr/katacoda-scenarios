@@ -9,7 +9,7 @@ cd knative-tekton
 
 Run the Script to Install Knative for the Tutorial
 ```
-./.katacoda/knative.sh
+source .katacoda/knative.sh
 ```{{execute}}
 
 Run this command until all pods are **Running**
