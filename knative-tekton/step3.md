@@ -1,27 +1,30 @@
-## Using Tekton to Build and Deploy Applications
+## Install Tekton
+
+Run the Script to Install Knative for the Tutorial
+```
+./.katacoda/tekton.sh
+```{{execute}}
 
 
-1. Install the provided task _build_ like this.
+
+- Get access to a container registry such as quay, dockerhub, or your own private registry instance from a Cloud provider such as IBM Cloud 😉. On this tutorial we are going to use [Dockerhub](https://hub.docker.com/)
+
+1 Set the environment variables `REGISTRY_SERVER`, `REGISTRY_NAMESPACE` and `REGISTRY_PASSWORD`, The `REGISTRY_NAMESPACE` most likely would be your dockerhub username. For Dockerhub use `docker.io` as the value for `REGISTRY_SERVER`
     ```
-    kubectl apply -f tekton/task-build.yaml
+    REGISTRY_SERVER='docker.io'
+    REGISTRY_NAMESPACE='REPLACEME_DOCKER_USERNAME_VALUE'
+    REGISTRY_PASSWORD='REPLACEME_DOCKER_PASSWORD'
     ```{{execute}}
-1. You can list the task that we just created using the `tkn` CLI
+1. We need to package our application in a Container Image and store this Image in a Container Registry. Since we are going to need to create secrets with the registry credentials we are going to create a ServiceAccount `pipelines` with the associated secret `regcred`. Make sure you setup your container credentials as environment variables. Checkout the [Setup Container Registry](#setup-container-registry) in the Setup Environment section on this tutorial. This commands will print your credentials make sure no one is looking over, the printed command is what you need to run.
     ```
-    tkn task ls
+    echo kubectl create secret docker-registry regcred \
+      --docker-server=\'${REGISTRY_SERVER}\' \
+      --docker-username=\'${REGISTRY_NAMESPACE}\' \
+      --docker-password=\'${REGISTRY_PASSWORD}\'
+    echo "Run the previous command manually ^ this avoids problems with charaters in the shell"
     ```{{execute}}
-1. We can also get more details about the _build_ **Task** using `tkn task describe`
+    NOTE: If you password have some characters that are interpreted by the shell, then do NOT use environment variables, explicit enter your values in the command wrapped by single quotes `'`
+1. Verify the secret `regcred` was created
     ```
-    tkn task describe build
-    ```{{execute}}
-1. Let's use the Tekton CLI to test our _build_ **Task** you need to pass the ServiceAccount `pipeline` to be use to run the Task. You will need to pass the GitHub URL to your fork or use this repository. You will need to pass the directory within the repository where the application in our case is `nodejs`. The repository image name is `knative-tekton`
-    ```
-    tkn task start build --showlog \
-      -p repo-url=${GIT_REPO_URL} \
-      -p image=${REGISTRY_SERVER}/${REGISTRY_NAMESPACE}/knative-tekton \
-      -p CONTEXT=nodejs \
-      -s pipeline 
-    ```{{execute}}
-1. You can check out the container registry and see that the image was pushed to repository a minute ago, it should return status Code `200`
-    ```
-    curl -s -o /dev/null -w "%{http_code}\n" https://index.$REGISTRY_SERVER/v1/repositories/$REGISTRY_NAMESPACE/knative-tekton/tags/latest
+    kubectl describe secret regcred
     ```{{execute}}
