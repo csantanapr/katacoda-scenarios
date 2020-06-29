@@ -11,3 +11,9 @@ Run the Script to Install Knative for the Tutorial
 ```
 ./.katacoda/knative.sh
 ```{{execute}}
+
+Run this command until all pods are **Running**
+```
+kubectl get pods -n knative-serving
+kubectl get pods -n kourier-system
+```{{execute}}
