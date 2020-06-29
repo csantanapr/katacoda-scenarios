@@ -1,1 +1,1 @@
-sleep 1; wait.sh
+launch.sh

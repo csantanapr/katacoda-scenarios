@@ -6,7 +6,8 @@
   "details": {
     "intro": {
       "text": "intro.md",
-      "credits": ""
+      "credits": "",
+      "code": "foreground.sh"
     },
     "steps": [
       {
@@ -31,8 +32,6 @@
     }
   },
   "environment": {
-    "hideintro": true,
-    "hidefinish": true,
     "hideHiddenFiles": true,
     "uilayout": "editor-terminal",
     "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\u001b[m\r\n",
